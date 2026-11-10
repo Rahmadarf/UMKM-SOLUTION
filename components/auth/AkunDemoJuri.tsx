@@ -1,52 +1,69 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/cn";
 import { AKUN_DEMO } from "@/lib/akunDemo";
 
 /**
- * Kotak akun demo di halaman masuk: juri dan pengunjung yang ingin mencoba
- * aplikasi menekan satu tombol, lalu kolom email dan kata sandi terisi.
+ * Akun demo di halaman masuk: seluruh kotak email dan password adalah satu
+ * target tekan. Menekannya mengisi kolom email dan kata sandi di bawahnya.
  *
- * Nilainya ditampilkan terang-terangan, bukan disembunyikan di balik tombol.
- * Kata sandinya memang publik (lihat lib/akunDemo.ts), dan menampilkannya
- * membuat pengunjung tahu persis akun apa yang akan dipakai sebelum menekan
- * apa pun. Tombolnya hanya mengisi kolom; yang masuk tetap tombol "Masuk",
- * supaya tidak ada login yang terjadi tanpa disadari.
+ * Nilainya ditampilkan terang-terangan karena kata sandinya memang publik
+ * (lihat lib/akunDemo.ts). Yang masuk tetap tombol "Masuk", supaya tidak ada
+ * login yang terjadi tanpa disadari.
+ *
+ * Rupanya mengikuti kolom isian di bawahnya (putih, garis tipis, sudut sama),
+ * hanya diberi rona hijau lembut dan garis putus-putus supaya terbaca sebagai
+ * isian yang bisa ditekan, bukan kolom yang harus diketik.
  */
 export function AkunDemoJuri({ onPakai }: { onPakai: (email: string, password: string) => void }) {
   const [terisi, setTerisi] = useState(false);
 
   return (
-    <div className="rounded-card border border-info-border bg-info-bg px-4 py-3.5">
-      <p className="text-sm font-semibold text-foreground">Akun demo untuk juri</p>
-      <p className="mt-0.5 text-xs text-muted-foreground">
-        Ingin langsung mencoba? Akun ini sudah berisi contoh bahan, resep, dan produk.
-      </p>
+    <div className="flex flex-col gap-1.5">
+      <p className="text-sm font-medium text-foreground">Akun demo untuk juri</p>
 
-      <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
-        <dt className="text-muted-foreground">Email</dt>
-        <dd className="font-mono break-all text-foreground">{AKUN_DEMO.email}</dd>
-        <dt className="text-muted-foreground">Kata sandi</dt>
-        <dd className="font-mono text-foreground">{AKUN_DEMO.password}</dd>
-      </dl>
+      <button
+        type="button"
+        aria-label={`Akun demo untuk juri, email ${AKUN_DEMO.email}. Tekan untuk mengisi email dan password.`}
+        onClick={() => {
+          onPakai(AKUN_DEMO.email, AKUN_DEMO.password);
+          setTerisi(true);
+        }}
+        className={cn(
+          "group relative grid w-full cursor-pointer items-baseline gap-x-3 sm:grid-cols-[4.5rem_1fr]",
+          "rounded-card border border-dashed px-3 py-2.5 pr-9 text-left text-sm transition-colors",
+          "focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring",
+          terisi
+            ? "border-solid border-primary bg-accent"
+            : "border-success-border bg-accent/50 hover:border-primary/60 hover:bg-accent",
+        )}
+      >
+        <span className="text-xs text-muted-foreground sm:text-sm">Email</span>
+        <span className="mb-1.5 font-mono break-all text-foreground sm:mb-1">{AKUN_DEMO.email}</span>
+        <span className="text-xs text-muted-foreground sm:text-sm">Password</span>
+        <span className="font-mono text-foreground">{AKUN_DEMO.password}</span>
 
-      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2">
-        <Button
-          type="button"
-          varian="secondary"
-          ukuran="sm"
-          onClick={() => {
-            onPakai(AKUN_DEMO.email, AKUN_DEMO.password);
-            setTerisi(true);
-          }}
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={cn(
+            "absolute top-1/2 right-3 size-4 -translate-y-1/2 text-primary transition-opacity",
+            terisi ? "opacity-100" : "opacity-0",
+          )}
         >
-          Isi otomatis
-        </Button>
-        <span role="status" className="text-xs text-success">
-          {terisi ? "Terisi. Tekan Masuk untuk melanjutkan." : ""}
-        </span>
-      </div>
+          <path d="M4 10.5l4 4 8-9" />
+        </svg>
+      </button>
+
+      <span role="status" className="sr-only">
+        {terisi ? "Email dan password terisi." : ""}
+      </span>
     </div>
   );
 }

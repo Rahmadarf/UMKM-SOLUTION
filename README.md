@@ -12,7 +12,7 @@ Karya tim **ApajaDeh** untuk Garda Tech National Innovation Competition (GTNIC) 
 
 ## Coba tanpa mendaftar
 
-Halaman [masuk](https://umkm-solution.vercel.app/login) punya kotak **Akun demo untuk juri**. Tekan **Isi otomatis**, lalu **Masuk**. Akun ini sudah berisi contoh bahan, resep, dan produk.
+Halaman [masuk](https://umkm-solution.vercel.app/login) punya kotak **Akun demo untuk juri**. Tekan kotaknya supaya email dan password terisi, lalu tekan **Masuk**. Akun ini sudah berisi contoh bahan, resep, dan produk.
 
 | | |
 |---|---|

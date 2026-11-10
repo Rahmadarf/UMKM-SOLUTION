@@ -172,7 +172,7 @@ Autentikasi email dan kata sandi. Kata sandi disimpan ter-hash. Pendaftaran memb
 
 Setelah berhasil, layar antara menutupi perpindahan halaman selama 900 ms: lambang usaha, satu kalimat keadaan, dan batang tipis yang terisi. Halaman tujuannya mulai diambil lewat `router.prefetch` tepat saat layar itu muncul, jadi jedanya menutupi pengambilan yang memang perlu terjadi. Tombol kirimnya tetap mati sampai halaman berpindah supaya tidak tertekan dua kali dari balik layar antara. Alur daftar berakhir di `/login`, bukan `/dashboard`, dan kalimatnya mengikuti tujuan yang sebenarnya.
 
-**Akun demo untuk juri.** Halaman masuk menampilkan kotak dengan email dan kata sandi akun demo serta tombol **Isi otomatis** yang mengisi kedua kolom. Tombolnya tidak login otomatis; yang masuk tetap tombol Masuk. Nilainya ada di satu tempat, `lib/akunDemo.ts`, dipakai bersama oleh tombol itu dan oleh `npm run seed:demo` yang membuat akunnya. Kata sandinya sengaja publik, jadi akun ini tidak boleh berisi data sungguhan.
+**Akun demo untuk juri.** Halaman masuk menampilkan kotak dengan email dan kata sandi akun demo yang bisa ditekan untuk mengisi kedua kolom. Menekannya tidak login otomatis; yang masuk tetap tombol Masuk. Nilainya ada di satu tempat, `lib/akunDemo.ts`, dipakai bersama oleh kotak itu dan oleh `npm run seed:demo` yang membuat akunnya. Kata sandinya sengaja publik, jadi akun ini tidak boleh berisi data sungguhan.
 
 Email tidak peka huruf besar-kecil: `Budi@Mail.com` dan `budi@mail.com` adalah akun yang sama, baik saat daftar maupun masuk. Percobaan masuk dan daftar dibatasi. Rinciannya ada di bagian 6.
 
