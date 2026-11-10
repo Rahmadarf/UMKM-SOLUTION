@@ -62,7 +62,7 @@ Jangan pernah meng-commit berkas `.env`. Nilai ini diisi lewat pengaturan Enviro
 
 ## 5. Akun demo juri
 
-Halaman masuk menampilkan kotak akun demo dengan tombol isi-otomatis. Nilainya ada di `lib/akunDemo.ts`, dan akunnya dibuat atau disegarkan dengan `npm run seed:demo`.
+Halaman masuk menampilkan kotak akun demo yang bisa ditekan untuk mengisi email dan password. Nilainya ada di `lib/akunDemo.ts`, dan akunnya dibuat atau disegarkan dengan `npm run seed:demo`.
 
 - Kata sandinya **sengaja publik** dan akunnya dipakai bersama, jadi datanya bisa diubah siapa saja. Jangan menyimpan data usaha sungguhan di sana.
 - `npm run seed:demo` menulis ke basis data yang ditunjuk `DATABASE_URL`. Periksa dulu `.env` mengarah ke mana.

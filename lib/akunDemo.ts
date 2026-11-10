@@ -1,7 +1,7 @@
 /**
  * Akun demo untuk juri dan pengunjung yang ingin mencoba aplikasi tanpa
  * mendaftar. Satu-satunya tempat nilainya ditulis: halaman masuk membacanya
- * untuk tombol isi-otomatis, dan prisma/seed-demo.ts memakainya untuk membuat
+ * untuk kotak akun demo, dan prisma/seed-demo.ts memakainya untuk membuat
  * akunnya. Dengan begitu keduanya tidak bisa berbeda.
  *
  * Ini kata sandi yang SENGAJA publik. Jangan pernah memakai kata sandi sungguhan
